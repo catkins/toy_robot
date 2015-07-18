@@ -1,3 +1,5 @@
+Work in progress
+
 ### Description:
 
 - The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
@@ -22,7 +24,6 @@ REPORT
 - `MOVE` will move the toy robot one unit forward in the direction it is currently facing.
 - `LEFT` and `RIGHT` will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
 - `REPORT` will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
-
 - A robot that is not on the table can choose the ignore the `MOVE`, `LEFT`, `RIGHT` and `REPORT` commands.
 - Input can be from a file, or from standard input, as the developer chooses.
 - Provide test data to exercise the application.
@@ -36,23 +37,39 @@ Example Input and Output:
 
 a)
 
+Input
+
 ```
 PLACE 0,0,NORTH
 MOVE
 REPORT
-Output: 0,1,NORTH
+```
+
+Output
+
+```
+0,1,NORTH
 ```
 
 b)
+
+Input
 
 ```
 PLACE 0,0,NORTH
 LEFT
 REPORT
-Output: 0,0,WEST
+```
+
+Output
+
+```
+0,0,WEST
 ```
 
 c)
+
+Input
 
 ```
 PLACE 1,2,EAST
@@ -61,5 +78,34 @@ MOVE
 LEFT
 MOVE
 REPORT
-Output: 3,3,NORTH
+```
+
+Output
+
+```
+3,3,NORTH
+```
+
+### Prerequisites
+
+- Ruby 2.1.2 `rbenv install 2.1.2`
+- Bundler `gem install bundler`
+
+### Usage
+
+```bash
+# Clone the repo
+git clone git@github.com:catkins/toy_robot.git
+
+# Install dependencies
+bundle install
+
+# Run the specs
+rake
+
+# Run the application providing input from STDIN
+bin/robot
+
+# Or if you've got a file full of commands handy,,,
+bin/robot < /path/to/command_file.txt
 ```
