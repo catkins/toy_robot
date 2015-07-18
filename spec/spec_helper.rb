@@ -1,3 +1,13 @@
+require 'simplecov'
+
+if ENV['COVERAGE']
+  SimpleCov.start do
+     add_filter '/spec/'
+  end
+end
+
+require 'toy_robot'
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 

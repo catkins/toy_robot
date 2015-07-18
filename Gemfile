@@ -6,9 +6,11 @@ group :test, :development do
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
   gem 'awesome_print'
+  gem 'rake'
 end
 
 group :test do
   gem 'rspec-its'
   gem 'rspec-mocks'
+  gem 'simplecov', require: false
 end
