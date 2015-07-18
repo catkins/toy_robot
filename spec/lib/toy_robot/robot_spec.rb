@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ToyRobot::Robot do
 
-  let(:table) { ToyRobot::Table.new 5, 5 }
+  let(:table) { ToyRobot::Table.new width: 5, height: 5 }
 
   subject(:robot) { described_class.new(table: table) }
 

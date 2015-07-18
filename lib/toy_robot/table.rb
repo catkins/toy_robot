@@ -3,7 +3,7 @@ module ToyRobot
   class Table
     attr_reader :width, :height
 
-    def initialize(width, height)
+    def initialize(width:, height:)
       @width, @height = width, height
     end
 

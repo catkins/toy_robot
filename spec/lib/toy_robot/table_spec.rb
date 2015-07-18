@@ -4,7 +4,7 @@ RSpec.describe ToyRobot::Table do
 
   let(:width)  { 5 }
   let(:height) { 5 }
-  subject(:table) { described_class.new(width, height) }
+  subject(:table) { described_class.new(width: width, height: height) }
 
   it { is_expected.to respond_to :width }
   it { is_expected.to respond_to :height }

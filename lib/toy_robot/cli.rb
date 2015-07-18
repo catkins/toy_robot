@@ -11,7 +11,7 @@ module ToyRobot
     def simulate
       @input_io ||= $stdin
 
-      @robot = Robot.new
+      build_robot!
 
       input_io.each_line do |input_line|
         execute_command input_line
@@ -21,6 +21,16 @@ module ToyRobot
     default_task :simulate
 
     private
+
+    def build_robot!
+      width  = options[:width]
+      height = options[:height]
+      table  = Table.new width: width, height: height
+
+      fail 'Invalid dimensions for tabletop' unless table.valid?
+
+      @robot = Robot.new table: table
+    end
 
     def execute_command(raw_command)
       raw_command = raw_command.strip
@@ -44,5 +54,6 @@ module ToyRobot
         []
       end
     end
+
   end
 end
