@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+# add lib directory to load path
+$: << File.expand_path("../../lib/", __FILE__)
+
+require 'toy_robot'
+
+ToyRobot::CLI.start ARGV
