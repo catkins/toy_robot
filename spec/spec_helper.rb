@@ -1,3 +1,5 @@
+require 'pry'
+require 'rspec/its'
 require 'simplecov'
 
 if ENV['COVERAGE']
