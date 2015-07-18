@@ -3,7 +3,7 @@ module ToyRobot
     attr_reader :table, :facing
 
     def initialize(table:)
-      @table = table
+      @table  = table
       @facing = :nowhere
     end
 
