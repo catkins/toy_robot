@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'thor'
+
 group :test, :development do
   gem 'rspec', '~> 3.3.0'
   gem 'pry'
