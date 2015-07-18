@@ -3,7 +3,8 @@ require 'thor'
 module ToyRobot
   class CLI < Thor
 
-    attr_accessor :input_io, :robot
+    attr_accessor :input_io
+    attr_reader :robot
 
     desc 'simulate', 'begin toy robot simulation'
     option :width,  type: :numeric, desc: 'Width of table',  default: DEFAULT_TABLE_WIDTH
@@ -34,6 +35,8 @@ module ToyRobot
 
     def execute_command(raw_command)
       raw_command = raw_command.strip
+
+      return if raw_command.blank?
 
       command = extract_command_name raw_command
       args    = extract_command_args raw_command
