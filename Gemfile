@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'thor'
+gem 'activesupport'
 
 group :test, :development do
   gem 'rspec', '~> 3.3.0'
