@@ -3,13 +3,15 @@ require 'thor'
 module ToyRobot
   class CLI < Thor
 
-    attr_accessor :input_io
+    attr_accessor :input_io, :robot
 
     desc 'simulate', 'begin toy robot simulation'
     option :width,  type: :numeric, desc: 'Width of table',  default: DEFAULT_TABLE_WIDTH
     option :height, type: :numeric, desc: 'Height of table', default: DEFAULT_TABLE_HEIGHT
     def simulate
       @input_io ||= $stdin
+
+      @robot = Robot.new
 
       input_io.each_line do |input_line|
         execute_command input_line
@@ -26,7 +28,7 @@ module ToyRobot
       command = extract_command_name raw_command
       args    = extract_command_args raw_command
 
-      puts "#{command.inspect} => #{args}"
+      robot.execute command, args
     end
 
     def extract_command_name(line)
@@ -36,7 +38,7 @@ module ToyRobot
     def extract_command_args(line)
       raw_args = line.split(' ').second
 
-      if raw_args
+      if raw_args.present?
         raw_args.split ','
       else
         []
