@@ -1,10 +1,11 @@
 module ToyRobot
   class Robot
-    attr_reader :table, :compass, :position
+    attr_reader :table, :compass, :position, :reporter
 
-    def initialize(table:, compass: Compass.new)
+    def initialize(table:, compass: Compass.new, reporter: Reporter.new)
       @table    = table
       @compass  = compass
+      @reporter = reporter
       @position = nil
     end
 
@@ -33,6 +34,10 @@ module ToyRobot
       if valid_position? new_position
         @position = new_position
       end
+    end
+
+    def report
+      reporter.report! self
     end
 
     def on_table?

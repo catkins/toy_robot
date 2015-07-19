@@ -12,6 +12,7 @@ module ToyRobot
 end
 
 require 'toy_robot/table'
+require 'toy_robot/reporter'
 require 'toy_robot/point'
 require 'toy_robot/direction'
 require 'toy_robot/compass'

@@ -2,13 +2,15 @@ require 'spec_helper'
 
 RSpec.describe ToyRobot::Robot do
 
-  let(:table)   { ToyRobot::Table.new width: 5, height: 5 }
-  let(:compass) { ToyRobot::Compass.new }
+  let(:table)    { ToyRobot::Table.new width: 5, height: 5 }
+  let(:compass)  { ToyRobot::Compass.new }
+  let(:reporter) { instance_double('ToyRobot::Reporter') }
 
-  subject(:robot) { described_class.new(table: table, compass: compass) }
+  subject(:robot) { described_class.new(table: table, compass: compass, reporter: reporter) }
 
   it { is_expected.not_to be_nil }
   it { is_expected.to respond_to :compass }
+  it { is_expected.to respond_to :reporter }
 
   describe '#facing' do
     it { is_expected.to respond_to :facing }
@@ -23,6 +25,17 @@ RSpec.describe ToyRobot::Robot do
 
       result = robot.facing
       expect(result).to eq(expected_direction)
+    end
+  end
+
+  describe '#report' do
+    it { is_expected.to respond_to :report }
+
+    before { allow(reporter).to receive(:report!) }
+
+    it "delegates reporting to it's reporter" do
+      robot.report
+      expect(reporter).to have_received(:report!).with(robot)
     end
   end
 
