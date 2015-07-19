@@ -10,8 +10,8 @@ module ToyRobot
       attribute :height, Integer
     end
 
-    def inside_bounds?(x, y)
-      x_bounds.include?(x) && y_bounds.include?(y)
+    def inside_bounds?(point)
+      x_bounds.include?(point.x) && y_bounds.include?(point.y)
     end
 
     def valid?

@@ -42,22 +42,20 @@ RSpec.describe ToyRobot::Table do
 
     it { is_expected.to respond_to :inside_bounds? }
 
-    let(:result) { subject.inside_bounds?(x, y) }
+    let(:result) { subject.inside_bounds?(point) }
 
-    context 'when given position is inside of the bounds of the table' do
-      let(:x) { 2 }
-      let(:y) { 2 }
+    context 'when given point is inside of the bounds of the table' do
+      let(:point) { ToyRobot::Point.new x: 2, y: 3 }
 
       it "returns `true`" do
         expect(result).to be true
       end
     end
 
-    context 'when given position is outside of the bounds of the table' do
-      let(:x) { 6 }
-      let(:y) { 7 }
+    context 'when given point is outside of the bounds of the table' do
+      let(:point) { ToyRobot::Point.new x: 6, y: 7 }
 
-      it "returns `true`" do
+      it "returns `false`" do
         expect(result).to be false
       end
     end
