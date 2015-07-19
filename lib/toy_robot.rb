@@ -14,5 +14,6 @@ end
 require 'toy_robot/table'
 require 'toy_robot/point'
 require 'toy_robot/direction'
+require 'toy_robot/compass'
 require 'toy_robot/robot'
 require 'toy_robot/cli'
