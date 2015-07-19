@@ -4,6 +4,7 @@ require 'active_support/core_ext/range/include_range'
 require 'active_support/core_ext/object/blank'
 
 require 'virtus'
+require 'adamantium'
 
 module ToyRobot
   DEFAULT_TABLE_WIDTH  = 5
