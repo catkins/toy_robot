@@ -206,10 +206,5 @@ RSpec.describe ToyRobot::Robot do
     end
   end
 
-  describe '#execute' do
-    it { is_expected.to respond_to :execute }
-
-  end
-
 end
 

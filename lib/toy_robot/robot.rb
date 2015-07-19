@@ -9,10 +9,6 @@ module ToyRobot
       @position = nil
     end
 
-    def execute(command, arguments)
-      puts "#{command.inspect} => #{arguments}"
-    end
-
     def facing
       compass.bearing
     end

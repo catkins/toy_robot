@@ -4,7 +4,7 @@ module ToyRobot
   class CLI < Thor
 
     attr_accessor :input_io
-    attr_reader :robot
+    attr_reader :robot, :executor
 
     desc 'simulate', 'begin toy robot simulation'
     option :width,  type: :numeric, desc: 'Width of table',  default: DEFAULT_TABLE_WIDTH
@@ -12,7 +12,8 @@ module ToyRobot
     def simulate
       @input_io ||= $stdin
 
-      build_robot!
+      @robot    = build_robot!
+      @executor = Executor.new robot
 
       input_io.each_line do |input_line|
         execute_command input_line
@@ -30,7 +31,7 @@ module ToyRobot
 
       fail 'Invalid dimensions for tabletop' unless table.valid?
 
-      @robot = Robot.new table: table
+      Robot.new table: table
     end
 
     def execute_command(raw_command)
@@ -41,7 +42,7 @@ module ToyRobot
       command = extract_command_name raw_command
       args    = extract_command_args raw_command
 
-      robot.execute command, args
+      executor.call command, args
     end
 
     def extract_command_name(line)

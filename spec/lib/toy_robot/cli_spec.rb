@@ -46,19 +46,19 @@ RSpec.describe ToyRobot::CLI do
         EOF
       }
 
-      let(:robot) { instance_double("ToyRobot::Robot") }
-      before { allow(cli).to receive(:robot) { robot } }
+      let(:executor) { instance_double("ToyRobot::Executor") }
+      before { allow(cli).to receive(:executor) { executor } }
 
-      it 'parses input and delegates to Robot#execute' do
-        expect(robot).to receive(:execute).with(:some_command, []).ordered
-        expect(robot).to receive(:execute).with(:another_command, ["1","2","3"]).ordered
-        expect(robot).to receive(:execute).with(:something_else, ["5","4","2"]).ordered
+      it 'parses input and delegates to Executor#call' do
+        expect(executor).to receive(:call).with(:some_command, []).ordered
+        expect(executor).to receive(:call).with(:another_command, ["1","2","3"]).ordered
+        expect(executor).to receive(:call).with(:something_else, ["5","4","2"]).ordered
 
         subject.simulate
       end
 
       it 'ignores blank lines' do
-        expect(robot).to receive(:execute).exactly(3).times
+        expect(executor).to receive(:call).exactly(3).times
 
         subject.simulate
       end
