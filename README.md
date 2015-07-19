@@ -1,5 +1,7 @@
 Work in progress
 
+[![Build Status](https://travis-ci.org/catkins/toy_robot.svg)](https://travis-ci.org/catkins/toy_robot) [![Coverage Status](https://coveralls.io/repos/catkins/toy_robot/badge.svg?branch=master&service=github)](https://coveralls.io/github/catkins/toy_robot?branch=master)
+
 ### Description:
 
 - The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
@@ -106,6 +108,6 @@ rake
 # Run the application providing input from STDIN
 bin/robot
 
-# Or if you've got a file full of commands handy,,,
+# Or if you've got a file full of commands handy...
 bin/robot < /path/to/command_file.txt
 ```
