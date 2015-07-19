@@ -16,4 +16,5 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-mocks'
   gem 'simplecov', require: false
+  gem 'coveralls', require: false
 end
