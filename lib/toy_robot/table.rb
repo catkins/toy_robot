@@ -3,6 +3,7 @@ module ToyRobot
   class Table
 
     include Virtus.value_object
+    include Adamantium
 
     values do
       attribute :width,  Integer

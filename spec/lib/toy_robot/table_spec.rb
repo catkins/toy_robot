@@ -8,6 +8,7 @@ RSpec.describe ToyRobot::Table do
 
   it { is_expected.to respond_to :width }
   it { is_expected.to respond_to :height }
+  it { is_expected.to be_frozen }
 
   describe '#valid?' do
 
