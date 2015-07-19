@@ -23,9 +23,13 @@ module ToyRobot
     end
 
     def bearing=(new_bearing)
-      return unless @directions.include? new_bearing
+      return unless has_direction?(new_bearing)
 
       @directions.rotate! @directions.index new_bearing
+    end
+
+    def has_direction?(direction)
+      @directions.include? direction
     end
   end
 end

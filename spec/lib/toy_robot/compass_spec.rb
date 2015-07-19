@@ -20,6 +20,22 @@ RSpec.describe ToyRobot::Compass do
     end
   end
 
+  describe '#has_direction?' do
+    subject(:result) { compass.has_direction? direction }
+
+    context 'with valid compass bearing' do
+      let(:direction) { ToyRobot::Direction.east }
+
+      it { is_expected.to be true }
+    end
+
+    context 'with invalid compass bearing' do
+      let(:direction) { ToyRobot::Direction.new name: 'Starward' }
+
+      it { is_expected.to be false }
+    end
+  end
+
   describe "#turn_left!" do
     it { is_expected.to respond_to :turn_left! }
 
