@@ -37,6 +37,10 @@ RSpec.describe ToyRobot::Robot do
       robot.report
       expect(reporter).to have_received(:report!).with(robot)
     end
+
+    it 'returns nil as it is a command method' do
+      expect(robot.report).to be_nil
+    end
   end
 
   describe '#position' do
@@ -131,6 +135,10 @@ RSpec.describe ToyRobot::Robot do
           robot.move
         }.not_to change(robot, :position)
       end
+
+      it 'returns nil as it is a command method' do
+        expect(robot.move).to be_nil
+      end
     end
 
     context 'when robot is not on edge of table' do
@@ -140,6 +148,10 @@ RSpec.describe ToyRobot::Robot do
       it 'updates position' do
         expect { robot.move } .to change(robot, :position)
           .from(starting_point).to(ToyRobot::Point.new x: 1, y: 2)
+      end
+
+      it 'returns nil as it is a command method' do
+        expect(robot.move).to be_nil
       end
     end
 
@@ -152,6 +164,10 @@ RSpec.describe ToyRobot::Robot do
         expect {
           robot.place(starting_point, direction)
         }.not_to change(robot, :position)
+      end
+
+      it 'returns nil as it is a command method' do
+        expect(robot.place(starting_point, direction)).to be_nil
       end
     end
   end

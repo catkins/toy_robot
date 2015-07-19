@@ -23,7 +23,7 @@ module ToyRobot
         @compass.bearing = direction
       end
 
-      nil # command methods don't return anything
+      nil
     end
 
     def move
@@ -34,10 +34,14 @@ module ToyRobot
       if valid_position? new_position
         @position = new_position
       end
+
+      nil
     end
 
     def report
       reporter.report! self
+
+      nil
     end
 
     def on_table?
