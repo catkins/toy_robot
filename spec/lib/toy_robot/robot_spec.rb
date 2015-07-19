@@ -39,6 +39,19 @@ RSpec.describe ToyRobot::Robot do
     end
   end
 
+  describe '#on_table?' do
+    context 'robot has not yet been placed on table' do
+      its(:on_table?) { is_expected.to be false }
+    end
+
+    context 'robot has been placed on a valid position on table' do
+      let(:valid_point) { ToyRobot::Point.new x: 3, y: 2 }
+      before { robot.place valid_point, ToyRobot::Direction.north }
+
+      its(:on_table?) { is_expected.to be true }
+    end
+  end
+
   describe '#place' do
     let(:new_point)     { ToyRobot::Point.new x: 3, y: 2 }
     let(:new_direction) { ToyRobot::Direction.east }

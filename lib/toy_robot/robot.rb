@@ -26,7 +26,7 @@ module ToyRobot
     end
 
     def move
-      return if not_on_table?
+      return unless on_table?
 
       new_position = @position.step_in_direction(@compass.bearing)
 
@@ -35,14 +35,14 @@ module ToyRobot
       end
     end
 
+    def on_table?
+      position.present?
+    end
+
     private
 
     def valid_position?(point)
       @table.inside_bounds?(point)
-    end
-
-    def not_on_table?
-      position.nil?
     end
 
   end
