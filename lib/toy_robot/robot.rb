@@ -15,11 +15,13 @@ module ToyRobot
 
     def left
       @compass.turn_left!
+
       nil
     end
 
     def right
       @compass.turn_right!
+
       nil
     end
 
