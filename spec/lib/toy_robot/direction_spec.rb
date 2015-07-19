@@ -8,7 +8,7 @@ RSpec.describe ToyRobot::Direction do
   describe "::north" do
     subject { described_class.north }
 
-    its(:name) { is_expected.to eq 'north' }
+    its(:name) { is_expected.to eq 'NORTH' }
     its(:x_difference) { is_expected.to eq 0 }
     its(:y_difference) { is_expected.to eq 1 }
   end
@@ -16,7 +16,7 @@ RSpec.describe ToyRobot::Direction do
   describe "::east" do
     subject { described_class.east }
 
-    its(:name) { is_expected.to eq 'east' }
+    its(:name) { is_expected.to eq 'EAST' }
     its(:x_difference) { is_expected.to eq 1 }
     its(:y_difference) { is_expected.to eq 0 }
   end
@@ -24,7 +24,7 @@ RSpec.describe ToyRobot::Direction do
   describe "::south" do
     subject { described_class.south }
 
-    its(:name) { is_expected.to eq 'south' }
+    its(:name) { is_expected.to eq 'SOUTH' }
     its(:x_difference) { is_expected.to eq 0 }
     its(:y_difference) { is_expected.to eq -1 }
   end
@@ -32,7 +32,7 @@ RSpec.describe ToyRobot::Direction do
   describe "::west" do
     subject { described_class.west }
 
-    its(:name) { is_expected.to eq 'west' }
+    its(:name) { is_expected.to eq 'WEST' }
     its(:x_difference) { is_expected.to eq -1 }
     its(:y_difference) { is_expected.to eq 0 }
   end

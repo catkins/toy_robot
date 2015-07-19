@@ -12,19 +12,19 @@ module ToyRobot
     class << self
 
       def north
-        Direction.new name: 'north', y_difference: 1
+        Direction.new name: 'NORTH', y_difference: 1
       end
 
       def east
-        Direction.new name: 'east',  x_difference: 1
+        Direction.new name: 'EAST',  x_difference: 1
       end
 
       def south
-        Direction.new name: 'south', y_difference: -1
+        Direction.new name: 'SOUTH', y_difference: -1
       end
 
       def west
-        Direction.new name: 'west',  x_difference: -1
+        Direction.new name: 'WEST',  x_difference: -1
       end
 
     end
