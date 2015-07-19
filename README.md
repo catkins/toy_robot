@@ -1,6 +1,6 @@
 Work in progress
 
-[![Build Status](https://travis-ci.org/catkins/toy_robot.svg)](https://travis-ci.org/catkins/toy_robot) [![Coverage Status](https://coveralls.io/repos/catkins/toy_robot/badge.svg?branch=master&service=github)](https://coveralls.io/github/catkins/toy_robot?branch=master)
+[![Build Status](https://travis-ci.org/catkins/toy_robot.svg)](https://travis-ci.org/catkins/toy_robot) [![Coverage Status](https://coveralls.io/repos/catkins/toy_robot/badge.svg?branch=master&service=github)](https://coveralls.io/github/catkins/toy_robot?branch=master) [![Code Climate](https://codeclimate.com/github/catkins/toy_robot/badges/gpa.svg)](https://codeclimate.com/github/catkins/toy_robot)
 
 ### Description:
 
