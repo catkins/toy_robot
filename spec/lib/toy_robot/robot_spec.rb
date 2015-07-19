@@ -69,6 +69,40 @@ RSpec.describe ToyRobot::Robot do
     end
   end
 
+  describe '#left' do
+    it "delegates to the robot's compass" do
+      expect(compass).to receive(:turn_left!)
+      robot.left
+    end
+
+    it "returns nil as it is a command method" do
+      expect(robot.left).to be_nil
+    end
+
+    it 'updates robots `facing` to be 90 degrees to the left' do
+      old_direction = robot.facing
+      new_direction = ToyRobot::Direction.west
+      expect { robot.left }.to change(robot, :facing).from(old_direction).to(new_direction)
+    end
+  end
+
+  describe '#right' do
+    it "delegates to the robot's compass" do
+      expect(compass).to receive(:turn_right!)
+      robot.right
+    end
+
+    it "returns nil as it is a command method" do
+      expect(robot.right).to be_nil
+    end
+
+    it 'updates robots `facing` to be 90 degrees to the right' do
+      old_direction = robot.facing
+      new_direction = ToyRobot::Direction.east
+      expect { robot.right }.to change(robot, :facing).from(old_direction).to(new_direction)
+    end
+  end
+
   describe '#place' do
     let(:new_point)     { ToyRobot::Point.new x: 3, y: 2 }
     let(:new_direction) { ToyRobot::Direction.east }

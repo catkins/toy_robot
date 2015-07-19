@@ -17,6 +17,16 @@ module ToyRobot
       compass.bearing
     end
 
+    def left
+      @compass.turn_left!
+      nil
+    end
+
+    def right
+      @compass.turn_right!
+      nil
+    end
+
     def place(point, direction)
       if table.inside_bounds?(point) && compass.has_direction?(direction)
         @position        = point
