@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'thor'
 gem 'activesupport'
+gem 'virtus'
 
 group :test, :development do
   gem 'rspec', '~> 3.3.0'
