@@ -16,7 +16,7 @@ RSpec.describe ToyRobot::Reporter do
     end
 
     context 'when robot is on the table' do
-      let(:direction) { ToyRobot::Direction.north }
+      let(:direction) { ToyRobot::Direction::NORTH }
       let(:position)  { ToyRobot::Point.new x: 2, y: 3 }
 
       before do

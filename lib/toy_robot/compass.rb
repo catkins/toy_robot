@@ -2,12 +2,7 @@ module ToyRobot
   class Compass
 
     def initialize
-      @directions = [
-        Direction.north,
-        Direction.east,
-        Direction.south,
-        Direction.west
-      ]
+      @directions = Direction::COMPASS_DIRECTIONS.dup
     end
 
     def turn_left!

@@ -16,7 +16,7 @@ RSpec.describe ToyRobot::Robot do
     it { is_expected.to respond_to :facing }
 
     it 'begins facing north' do
-      expect(robot.facing).to eq ToyRobot::Direction.north
+      expect(robot.facing).to eq ToyRobot::Direction::NORTH
     end
 
     it "delegates to the robot's compass" do
@@ -50,7 +50,7 @@ RSpec.describe ToyRobot::Robot do
 
     context 'robot has been placed on a valid position on table' do
       let(:valid_point) { ToyRobot::Point.new x: 3, y: 2 }
-      before { robot.place valid_point, ToyRobot::Direction.north }
+      before { robot.place valid_point, ToyRobot::Direction::NORTH }
 
       its(:position) { is_expected.to eq valid_point }
     end
@@ -63,7 +63,7 @@ RSpec.describe ToyRobot::Robot do
 
     context 'robot has been placed on a valid position on table' do
       let(:valid_point) { ToyRobot::Point.new x: 3, y: 2 }
-      before { robot.place valid_point, ToyRobot::Direction.north }
+      before { robot.place valid_point, ToyRobot::Direction::NORTH }
 
       its(:on_table?) { is_expected.to be true }
     end
@@ -81,7 +81,7 @@ RSpec.describe ToyRobot::Robot do
 
     it 'updates robots `facing` to be 90 degrees to the left' do
       old_direction = robot.facing
-      new_direction = ToyRobot::Direction.west
+      new_direction = ToyRobot::Direction::WEST
       expect { robot.left }.to change(robot, :facing).from(old_direction).to(new_direction)
     end
   end
@@ -98,14 +98,14 @@ RSpec.describe ToyRobot::Robot do
 
     it 'updates robots `facing` to be 90 degrees to the right' do
       old_direction = robot.facing
-      new_direction = ToyRobot::Direction.east
+      new_direction = ToyRobot::Direction::EAST
       expect { robot.right }.to change(robot, :facing).from(old_direction).to(new_direction)
     end
   end
 
   describe '#place' do
     let(:new_point)     { ToyRobot::Point.new x: 3, y: 2 }
-    let(:new_direction) { ToyRobot::Direction.east }
+    let(:new_direction) { ToyRobot::Direction::EAST }
 
     context 'with a valid point and direction' do
 
@@ -116,7 +116,7 @@ RSpec.describe ToyRobot::Robot do
       end
 
       it "updates robot's facing" do
-        old_direction = ToyRobot::Direction.north
+        old_direction = ToyRobot::Direction::NORTH
         expect {
           robot.place(new_point, new_direction)
         }.to change(robot, :facing).from(old_direction).to(new_direction)
@@ -125,7 +125,7 @@ RSpec.describe ToyRobot::Robot do
 
     context 'with an invalid (off the table) point' do
       let(:new_point)     { ToyRobot::Point.new x: 5, y: 6 }
-      let(:new_direction) { ToyRobot::Direction.east }
+      let(:new_direction) { ToyRobot::Direction::EAST }
 
       it "does not change robot's position" do
         expect {
@@ -134,7 +134,7 @@ RSpec.describe ToyRobot::Robot do
       end
 
       it "does not change robot's facing" do
-        old_direction = ToyRobot::Direction.north
+        old_direction = ToyRobot::Direction::NORTH
         expect {
           robot.place(new_point, new_direction)
         }.not_to change(robot, :facing)
@@ -152,7 +152,7 @@ RSpec.describe ToyRobot::Robot do
       end
 
       it "does not change robot's facing" do
-        old_direction = ToyRobot::Direction.north
+        old_direction = ToyRobot::Direction::NORTH
         expect {
           robot.place(new_point, new_direction)
         }.not_to change(robot, :facing)
@@ -177,7 +177,7 @@ RSpec.describe ToyRobot::Robot do
 
     context 'when robot is not on edge of table' do
       let(:starting_point) { ToyRobot::Point.new x: 1, y: 1 }
-      before { robot.place starting_point, ToyRobot::Direction.north }
+      before { robot.place starting_point, ToyRobot::Direction::NORTH }
 
       it 'updates position' do
         expect { robot.move } .to change(robot, :position)
@@ -191,7 +191,7 @@ RSpec.describe ToyRobot::Robot do
 
     context 'when robot is on edge of table and facing the abyss' do
       let(:starting_point) { ToyRobot::Point.new x: 0, y: 0 }
-      let(:direction) { ToyRobot::Direction.south }
+      let(:direction) { ToyRobot::Direction::SOUTH }
       before { robot.place starting_point, direction }
 
       it "does not change robot's position" do
