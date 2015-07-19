@@ -1,10 +1,12 @@
 module ToyRobot
 
   class Table
-    attr_reader :width, :height
 
-    def initialize(width:, height:)
-      @width, @height = width, height
+    include Virtus.value_object
+
+    values do
+      attribute :width,  Integer
+      attribute :height, Integer
     end
 
     def inside_bounds?(x, y)

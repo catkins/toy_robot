@@ -3,6 +3,8 @@ require 'active_support/core_ext/array/access'
 require 'active_support/core_ext/range/include_range'
 require 'active_support/core_ext/object/blank'
 
+require 'virtus'
+
 module ToyRobot
   DEFAULT_TABLE_WIDTH  = 5
   DEFAULT_TABLE_HEIGHT = 5
