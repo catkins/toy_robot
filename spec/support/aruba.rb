@@ -10,7 +10,7 @@ class RobotRunner
     exit_code = begin
       # Thor accesses these streams directly rather than letting them be injected, so we replace them...
       $stderr = @stderr
-      $stdin = @stdin
+      $stdin  = @stdin
       $stdout = @stdout
 
       # Run our normal Thor app the way we know and love.
@@ -46,7 +46,7 @@ class RobotRunner
   end
 end
 
-Aruba.configure do |config|
-  config.command_launcher = :in_process
-  config.main_class = RobotRunner
-end
+# Aruba.configure do |config|
+#   config.command_launcher = :in_process
+#   config.main_class = RobotRunner
+# end

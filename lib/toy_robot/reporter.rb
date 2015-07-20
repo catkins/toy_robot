@@ -7,8 +7,8 @@ module ToyRobot
       position = robot.position
       facing   = robot.facing
 
-      puts "#{position.x},#{position.y},#{facing.name}"
+      $stdout.puts "#{position.x},#{position.y},#{facing.name}"
+      $stdout.flush
     end
-
   end
 end
