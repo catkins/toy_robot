@@ -6,7 +6,8 @@ RSpec.describe ToyRobot::CLI do
 
   let(:flags) { { width: 5, height: 5 } }
 
-  # CLI consumes $stdin by default, but we can't block on reads from stdin during testing
+  # CLI consumes $stdin by default, but we can't block on
+  # reads from stdin during testing
   before { described_class.input_io = StringIO.new(input) }
 
   subject(:cli) do
@@ -45,9 +46,17 @@ RSpec.describe ToyRobot::CLI do
       before { allow(cli).to receive(:executor) { executor } }
 
       it 'parses input and delegates to Executor#call' do
-        expect(executor).to receive(:call).with(:some_command, []).ordered
-        expect(executor).to receive(:call).with(:another_command, %w(1 2 3)).ordered
-        expect(executor).to receive(:call).with(:something_else, %w(5 4 2)).ordered
+        expect(executor).to receive(:call)
+          .with(:some_command, [])
+          .ordered
+
+        expect(executor).to receive(:call)
+          .with(:another_command, %w(1 2 3))
+          .ordered
+
+        expect(executor).to receive(:call)
+          .with(:something_else, %w(5 4 2))
+          .ordered
 
         subject.simulate
       end

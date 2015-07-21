@@ -1,7 +1,9 @@
 require 'pry'
 require 'rspec/its'
 
-Dir.glob(::File.expand_path('../support/*.rb', __FILE__)).each { |f| require_relative f }
+Dir.glob(::File.expand_path('../support/*.rb', __FILE__)).each do |file|
+  require_relative file
+end
 
 if ENV['COVERAGE']
   require 'simplecov'

@@ -43,14 +43,14 @@ RSpec.describe ToyRobot::Direction do
 
     its(:name) { is_expected.to eq 'SOUTH' }
     its(:x_difference) { is_expected.to eq 0 }
-    its(:y_difference) { is_expected.to eq -1 }
+    its(:y_difference) { is_expected.to eq(-1) }
   end
 
   describe '::WEST' do
     subject { described_class::WEST }
 
     its(:name) { is_expected.to eq 'WEST' }
-    its(:x_difference) { is_expected.to eq -1 }
+    its(:x_difference) { is_expected.to eq(-1) }
     its(:y_difference) { is_expected.to eq 0 }
   end
 end

@@ -23,7 +23,8 @@ RSpec.describe ToyRobot::Executor do
       let(:expected_direction) { ToyRobot::Direction.by_name 'NORTH' }
 
       it 'delegates to Robot#place' do
-        expect(robot).to receive(:place).with(expected_position, expected_direction)
+        expect(robot).to receive(:place)
+          .with(expected_position, expected_direction)
 
         executor.call :place, %w(2 4 NORTH)
       end

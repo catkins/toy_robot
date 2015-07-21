@@ -5,7 +5,9 @@ RSpec.describe ToyRobot::Robot do
   let(:compass)  { ToyRobot::Compass.new }
   let(:reporter) { instance_double('ToyRobot::Reporter') }
 
-  subject(:robot) { described_class.new(table: table, compass: compass, reporter: reporter) }
+  subject(:robot) do
+    described_class.new(table: table, compass: compass, reporter: reporter)
+  end
 
   it { is_expected.not_to be_nil }
   it { is_expected.to respond_to :compass }
@@ -81,7 +83,9 @@ RSpec.describe ToyRobot::Robot do
     it 'updates robots `facing` to be 90 degrees to the left' do
       old_direction = robot.facing
       new_direction = ToyRobot::Direction::WEST
-      expect { robot.left }.to change(robot, :facing).from(old_direction).to(new_direction)
+      expect do
+        robot.left
+      end.to change(robot, :facing).from(old_direction).to(new_direction)
     end
   end
 
@@ -98,7 +102,9 @@ RSpec.describe ToyRobot::Robot do
     it 'updates robots `facing` to be 90 degrees to the right' do
       old_direction = robot.facing
       new_direction = ToyRobot::Direction::EAST
-      expect { robot.right }.to change(robot, :facing).from(old_direction).to(new_direction)
+      expect do
+        robot.right
+      end.to change(robot, :facing).from(old_direction).to(new_direction)
     end
   end
 
@@ -108,9 +114,10 @@ RSpec.describe ToyRobot::Robot do
 
     context 'with a valid point and direction' do
       it "updates robot's position" do
+        new_position = ToyRobot::Point.new x: 3, y: 2
         expect do
           robot.place(new_point, new_direction)
-        end.to change(robot, :position).from(nil).to(ToyRobot::Point.new x: 3, y: 2)
+        end.to change(robot, :position).from(nil).to(new_position)
       end
 
       it "updates robot's facing" do
@@ -132,7 +139,6 @@ RSpec.describe ToyRobot::Robot do
       end
 
       it "does not change robot's facing" do
-        old_direction = ToyRobot::Direction::NORTH
         expect do
           robot.place(new_point, new_direction)
         end.not_to change(robot, :facing)
@@ -150,7 +156,6 @@ RSpec.describe ToyRobot::Robot do
       end
 
       it "does not change robot's facing" do
-        old_direction = ToyRobot::Direction::NORTH
         expect do
           robot.place(new_point, new_direction)
         end.not_to change(robot, :facing)

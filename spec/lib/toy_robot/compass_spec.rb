@@ -19,8 +19,8 @@ RSpec.describe ToyRobot::Compass do
     end
   end
 
-  describe '#has_direction?' do
-    subject(:result) { compass.has_direction? direction }
+  describe '#includes_direction?' do
+    subject(:result) { compass.includes_direction? direction }
 
     context 'with valid compass bearing' do
       let(:direction) { ToyRobot::Direction::EAST }

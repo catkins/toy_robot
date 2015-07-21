@@ -5,7 +5,11 @@ RSpec.describe ToyRobot::Point do
 
   describe '#step_in_direction' do
     let(:starting_point) { described_class.new x: 1, y: 2 }
-    let(:direction) { ToyRobot::Direction.new name: 'onward', x_difference: 1, y_difference: -1 }
+
+    let(:direction) do
+      ToyRobot::Direction.new name: 'onward', x_difference: 1, y_difference: -1
+    end
+
     subject(:result) { starting_point.step_in_direction(direction) }
 
     it 'returns a new point' do

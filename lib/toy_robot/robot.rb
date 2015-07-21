@@ -26,7 +26,7 @@ module ToyRobot
     end
 
     def place(point, direction)
-      if table.inside_bounds?(point) && compass.has_direction?(direction)
+      if table.inside_bounds?(point) && compass.includes_direction?(direction)
         @position        = point
         @compass.bearing = direction
       end
