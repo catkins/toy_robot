@@ -74,9 +74,7 @@ Any move that would cause the robot to fall must be ignored.
 
 ### Example Input and Output:
 
-a)
-
-Input
+a) Input
 
 ```
 PLACE 0,0,NORTH
@@ -90,9 +88,7 @@ Output
 0,1,NORTH
 ```
 
-b)
-
-Input
+b) Input
 
 ```
 PLACE 0,0,NORTH
@@ -106,9 +102,7 @@ Output
 0,0,WEST
 ```
 
-c)
-
-Input
+c) Input
 
 ```
 PLACE 1,2,EAST
