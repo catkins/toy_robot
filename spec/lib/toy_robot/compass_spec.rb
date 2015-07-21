@@ -1,17 +1,16 @@
 RSpec.describe ToyRobot::Compass do
-
-  subject(:compass) { described_class.new() }
+  subject(:compass) { described_class.new }
 
   it { is_expected.to respond_to :bearing }
   it { is_expected.to respond_to :bearing= }
   it { is_expected.to respond_to :turn_right! }
 
-  describe "#bearing" do
-    it "is initially pointing north" do
+  describe '#bearing' do
+    it 'is initially pointing north' do
       expect(compass.bearing).to eq ToyRobot::Direction::NORTH
     end
 
-    it "returns the current bearing" do
+    it 'returns the current bearing' do
       compass.bearing = ToyRobot::Direction::WEST
       expect(compass.bearing).to eq ToyRobot::Direction::WEST
 
@@ -36,58 +35,55 @@ RSpec.describe ToyRobot::Compass do
     end
   end
 
-  describe "#turn_left!" do
+  describe '#turn_left!' do
     it { is_expected.to respond_to :turn_left! }
 
     before { compass.bearing = ToyRobot::Direction::NORTH }
 
-    it "one call turns the compass 90 degrees to the left" do
+    it 'one call turns the compass 90 degrees to the left' do
       compass.turn_left!
       expect(compass.bearing).to eq ToyRobot::Direction::WEST
     end
 
-    it "two calls turns the compass 180 degrees to the left" do
+    it 'two calls turns the compass 180 degrees to the left' do
       2.times { compass.turn_left! }
       expect(compass.bearing).to eq ToyRobot::Direction::SOUTH
     end
 
-    it "three calls turns the compass 90 degrees to the left" do
+    it 'three calls turns the compass 90 degrees to the left' do
       3.times { compass.turn_left! }
       expect(compass.bearing).to eq ToyRobot::Direction::EAST
     end
 
-    it "four calls turns the compass a full circle" do
+    it 'four calls turns the compass a full circle' do
       4.times { compass.turn_left! }
       expect(compass.bearing).to eq ToyRobot::Direction::NORTH
     end
-
   end
 
-  describe "#turn_right!" do
-
+  describe '#turn_right!' do
     it { is_expected.to respond_to :turn_right! }
 
     before { compass.bearing = ToyRobot::Direction::NORTH }
 
-    it "one call turns the compass 90 degrees to the right" do
+    it 'one call turns the compass 90 degrees to the right' do
       compass.turn_right!
       expect(compass.bearing).to eq ToyRobot::Direction::EAST
     end
 
-    it "two calls turns the compass 180 degrees to the right" do
+    it 'two calls turns the compass 180 degrees to the right' do
       2.times { compass.turn_right! }
       expect(compass.bearing).to eq ToyRobot::Direction::SOUTH
     end
 
-    it "three calls turns the compass 90 degrees to the right" do
+    it 'three calls turns the compass 90 degrees to the right' do
       3.times { compass.turn_right! }
       expect(compass.bearing).to eq ToyRobot::Direction::WEST
     end
 
-    it "four calls turns the compass a full circle" do
+    it 'four calls turns the compass a full circle' do
       4.times { compass.turn_right! }
       expect(compass.bearing).to eq ToyRobot::Direction::NORTH
     end
-
   end
 end

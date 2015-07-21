@@ -3,7 +3,6 @@ require 'rspec/its'
 
 Dir.glob(::File.expand_path('../support/*.rb', __FILE__)).each { |f| require_relative f }
 
-
 if ENV['COVERAGE']
   require 'simplecov'
   require 'coveralls'
@@ -14,7 +13,7 @@ if ENV['COVERAGE']
   ]
 
   SimpleCov.start do
-     add_filter '/spec/'
+    add_filter '/spec/'
   end
 end
 
@@ -22,7 +21,6 @@ require 'toy_robot'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

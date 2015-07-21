@@ -2,7 +2,6 @@ require 'thor'
 
 module ToyRobot
   class CLI < Thor
-
     no_commands do
       cattr_accessor(:input_io)  { $stdin  }
     end
@@ -59,6 +58,5 @@ module ToyRobot
         []
       end
     end
-
   end
 end

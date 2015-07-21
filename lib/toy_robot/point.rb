@@ -14,6 +14,5 @@ module ToyRobot
 
       Point.new x: new_x, y: new_y
     end
-
   end
 end

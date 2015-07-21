@@ -2,8 +2,7 @@ require 'active_support/core_ext/string/strip'
 require 'spec_helper'
 
 RSpec.describe ToyRobot::CLI do
-
-  let(:input) { "" }
+  let(:input) { '' }
 
   let(:flags) { { width: 5, height: 5 } }
 
@@ -19,8 +18,7 @@ RSpec.describe ToyRobot::CLI do
   it { is_expected.to respond_to :robot }
   it { is_expected.to respond_to :input_io }
 
-  describe "Thor options" do
-
+  describe 'Thor options' do
     it 'registers command named simulate' do
       expect(described_class.commands.keys).to include 'simulate'
     end
@@ -28,30 +26,28 @@ RSpec.describe ToyRobot::CLI do
     it 'registers #simulate as default task' do
       expect(described_class.default_task).to eq 'simulate'
     end
-
   end
 
   describe '#simulate' do
     it { is_expected.to respond_to :simulate }
 
     describe 'command delegation' do
-
-      let(:input) {
+      let(:input) do
         <<-EOF.strip_heredoc
           SOME_COMMAND
           ANOTHER_COMMAND 1,2,3
 
           SOMETHING_ELSE 5,4,2
         EOF
-      }
+      end
 
-      let(:executor) { instance_double("ToyRobot::Executor") }
+      let(:executor) { instance_double('ToyRobot::Executor') }
       before { allow(cli).to receive(:executor) { executor } }
 
       it 'parses input and delegates to Executor#call' do
         expect(executor).to receive(:call).with(:some_command, []).ordered
-        expect(executor).to receive(:call).with(:another_command, ["1","2","3"]).ordered
-        expect(executor).to receive(:call).with(:something_else, ["5","4","2"]).ordered
+        expect(executor).to receive(:call).with(:another_command, %w(1 2 3)).ordered
+        expect(executor).to receive(:call).with(:something_else, %w(5 4 2)).ordered
 
         subject.simulate
       end
@@ -63,6 +59,4 @@ RSpec.describe ToyRobot::CLI do
       end
     end
   end
-
 end
-

@@ -1,6 +1,5 @@
 module ToyRobot
   class Compass
-
     def initialize
       @directions = Direction::COMPASS_DIRECTIONS.dup
     end

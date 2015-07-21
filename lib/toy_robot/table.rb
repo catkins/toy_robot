@@ -1,7 +1,5 @@
 module ToyRobot
-
   class Table
-
     include Virtus.value_object
     include Adamantium
 
@@ -28,5 +26,4 @@ module ToyRobot
       0..(height - 1)
     end
   end
-
 end

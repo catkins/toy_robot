@@ -39,9 +39,7 @@ module ToyRobot
 
       new_position = @position.step_in_direction(@compass.bearing)
 
-      if valid_position? new_position
-        @position = new_position
-      end
+      @position = new_position if valid_position? new_position
 
       nil
     end
@@ -61,6 +59,5 @@ module ToyRobot
     def valid_position?(point)
       @table.inside_bounds?(point)
     end
-
   end
 end

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe ToyRobot::Table do
-
   let(:width)  { 5 }
   let(:height) { 5 }
   subject(:table) { described_class.new(width: width, height: height) }
@@ -11,11 +10,9 @@ RSpec.describe ToyRobot::Table do
   it { is_expected.to be_frozen }
 
   describe '#valid?' do
-
     it { is_expected.to respond_to :valid? }
 
     context 'when width is greater than zero' do
-
       context 'but height is not' do
         let(:height) { 0 }
 
@@ -39,7 +36,6 @@ RSpec.describe ToyRobot::Table do
   end
 
   describe '#inside_bounds?' do
-
     it { is_expected.to respond_to :inside_bounds? }
 
     let(:result) { subject.inside_bounds?(point) }
@@ -47,7 +43,7 @@ RSpec.describe ToyRobot::Table do
     context 'when given point is inside of the bounds of the table' do
       let(:point) { ToyRobot::Point.new x: 2, y: 3 }
 
-      it "returns `true`" do
+      it 'returns `true`' do
         expect(result).to be true
       end
     end
@@ -55,10 +51,9 @@ RSpec.describe ToyRobot::Table do
     context 'when given point is outside of the bounds of the table' do
       let(:point) { ToyRobot::Point.new x: 6, y: 7 }
 
-      it "returns `false`" do
+      it 'returns `false`' do
         expect(result).to be false
       end
     end
   end
-
 end

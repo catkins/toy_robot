@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe ToyRobot::Robot do
-
   let(:table)    { ToyRobot::Table.new width: 5, height: 5 }
   let(:compass)  { ToyRobot::Compass.new }
   let(:reporter) { instance_double('ToyRobot::Reporter') }
@@ -75,7 +74,7 @@ RSpec.describe ToyRobot::Robot do
       robot.left
     end
 
-    it "returns nil as it is a command method" do
+    it 'returns nil as it is a command method' do
       expect(robot.left).to be_nil
     end
 
@@ -92,7 +91,7 @@ RSpec.describe ToyRobot::Robot do
       robot.right
     end
 
-    it "returns nil as it is a command method" do
+    it 'returns nil as it is a command method' do
       expect(robot.right).to be_nil
     end
 
@@ -108,18 +107,17 @@ RSpec.describe ToyRobot::Robot do
     let(:new_direction) { ToyRobot::Direction::EAST }
 
     context 'with a valid point and direction' do
-
       it "updates robot's position" do
-        expect {
+        expect do
           robot.place(new_point, new_direction)
-        }.to change(robot, :position).from(nil).to(ToyRobot::Point.new x: 3, y: 2)
+        end.to change(robot, :position).from(nil).to(ToyRobot::Point.new x: 3, y: 2)
       end
 
       it "updates robot's facing" do
         old_direction = ToyRobot::Direction::NORTH
-        expect {
+        expect do
           robot.place(new_point, new_direction)
-        }.to change(robot, :facing).from(old_direction).to(new_direction)
+        end.to change(robot, :facing).from(old_direction).to(new_direction)
       end
     end
 
@@ -128,16 +126,16 @@ RSpec.describe ToyRobot::Robot do
       let(:new_direction) { ToyRobot::Direction::EAST }
 
       it "does not change robot's position" do
-        expect {
+        expect do
           robot.place(new_point, new_direction)
-        }.not_to change(robot, :position)
+        end.not_to change(robot, :position)
       end
 
       it "does not change robot's facing" do
         old_direction = ToyRobot::Direction::NORTH
-        expect {
+        expect do
           robot.place(new_point, new_direction)
-        }.not_to change(robot, :facing)
+        end.not_to change(robot, :facing)
       end
     end
 
@@ -146,16 +144,16 @@ RSpec.describe ToyRobot::Robot do
       let(:new_direction) { ToyRobot::Direction.new name: 'downside up' }
 
       it "does not change robot's position" do
-        expect {
+        expect do
           robot.place(new_point, new_direction)
-        }.not_to change(robot, :position)
+        end.not_to change(robot, :position)
       end
 
       it "does not change robot's facing" do
         old_direction = ToyRobot::Direction::NORTH
-        expect {
+        expect do
           robot.place(new_point, new_direction)
-        }.not_to change(robot, :facing)
+        end.not_to change(robot, :facing)
       end
     end
   end
@@ -165,9 +163,9 @@ RSpec.describe ToyRobot::Robot do
 
     context 'before robot is placed on table' do
       it "does not change robot's position" do
-        expect {
+        expect do
           robot.move
-        }.not_to change(robot, :position)
+        end.not_to change(robot, :position)
       end
 
       it 'returns nil as it is a command method' do
@@ -195,9 +193,9 @@ RSpec.describe ToyRobot::Robot do
       before { robot.place starting_point, direction }
 
       it "does not change robot's position" do
-        expect {
+        expect do
           robot.place(starting_point, direction)
-        }.not_to change(robot, :position)
+        end.not_to change(robot, :position)
       end
 
       it 'returns nil as it is a command method' do
@@ -205,6 +203,4 @@ RSpec.describe ToyRobot::Robot do
       end
     end
   end
-
 end
-
