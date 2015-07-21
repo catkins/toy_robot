@@ -5,15 +5,14 @@ RSpec.describe ToyRobot::CLI do
 
   let(:input) { "" }
 
-  # CLI consumes $stdin by default, but we can't block on reads from stdin during testing
-  let(:input_io) { StringIO.new input }
-
   let(:flags) { { width: 5, height: 5 } }
+
+  # CLI consumes $stdin by default, but we can't block on reads from stdin during testing
+  before { described_class.input_io = StringIO.new(input) }
 
   subject(:cli) do
     described_class.new.tap do |app|
       app.options  = flags
-      app.input_io = input_io
     end
   end
 

@@ -2,6 +2,7 @@
 require 'active_support/core_ext/array/access'
 require 'active_support/core_ext/range/include_range'
 require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/class/attribute_accessors'
 
 require 'virtus'
 require 'adamantium'

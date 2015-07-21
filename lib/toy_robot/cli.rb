@@ -3,15 +3,16 @@ require 'thor'
 module ToyRobot
   class CLI < Thor
 
-    attr_accessor :input_io
+    no_commands do
+      cattr_accessor(:input_io)  { $stdin  }
+    end
+
     attr_reader :robot, :executor
 
     desc 'simulate', 'begin toy robot simulation'
     option :width,  type: :numeric, desc: 'Width of table',  default: DEFAULT_TABLE_WIDTH
     option :height, type: :numeric, desc: 'Height of table', default: DEFAULT_TABLE_HEIGHT
     def simulate
-      @input_io ||= $stdin
-
       @robot    = build_robot!
       @executor = Executor.new robot
 
