@@ -1,6 +1,6 @@
 module ToyRobot
   class Executor
-    AVAILABLE_COMMANDS = %i(left right move place report).freeze
+    AVAILABLE_COMMANDS = %i(left right move place report place_object).freeze
 
     attr_reader :robot
 
@@ -26,7 +26,7 @@ module ToyRobot
       robot.place position, direction
     end
 
-    %i(left right move report).each do |command|
+    %i(left right move report place_object).each do |command|
       define_method(command) do
         robot.public_send command
       end
