@@ -7,6 +7,7 @@ gem 'adamantium'
 
 group :test, :development do
   gem 'rspec', '~> 3.3.0'
+  gem 'aruba'
   gem 'pry'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'

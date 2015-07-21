@@ -35,6 +35,7 @@ My solution was geared towards extensibility and testability. Object composition
 
 - [Thor](http://whatisthor.com/) - The Ruby CLI toolkit by @sferik and @wycats. Used to handle options parsing etc.
 - [RSpec](http://rspec.info/) - Defacto standard BDD framework for Ruby
+- [Aruba](https://github.com/cucumber/aruba) - CLI integration testing helpers
 - [Virtus](https://github.com/solnic/virtus) - Used to quickly and declaratively create value types
 - [Adamantium](https://github.com/dkubb/adamantium) - Immutability helpers
 - [Pry](http://pryrepl.org/) - IRB alternative
