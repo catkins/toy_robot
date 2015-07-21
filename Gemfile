@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'thor'
 gem 'activesupport'
@@ -12,6 +12,7 @@ group :test, :development do
   gem 'pry-byebug'
   gem 'awesome_print'
   gem 'rake'
+  gem 'rubocop', require: false
 end
 
 group :test do

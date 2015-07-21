@@ -1,6 +1,5 @@
 module ToyRobot
   class Compass
-
     def initialize
       @directions = Direction::COMPASS_DIRECTIONS.dup
     end
@@ -18,12 +17,12 @@ module ToyRobot
     end
 
     def bearing=(new_bearing)
-      return unless has_direction?(new_bearing)
+      return unless includes_direction?(new_bearing)
 
       @directions.rotate! @directions.index new_bearing
     end
 
-    def has_direction?(direction)
+    def includes_direction?(direction)
       @directions.include? direction
     end
   end

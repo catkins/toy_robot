@@ -7,4 +7,10 @@ RSpec::Core::RakeTask.new(:spec) do |task|
   task.rspec_opts = ['--color', '--order', 'rand']
 end
 
-task :default => :spec
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new
+
+task build: [:spec, :rubocop]
+
+task default: :build

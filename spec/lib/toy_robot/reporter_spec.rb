@@ -1,5 +1,4 @@
 RSpec.describe ToyRobot::Reporter do
-
   it { is_expected.to respond_to :report! }
 
   describe '#report!' do

@@ -1,7 +1,6 @@
 require 'securerandom'
 
-RSpec.describe "input from STDIN" do
-
+RSpec.describe 'input from STDIN' do
   before { ToyRobot::CLI.input_io = StringIO.new input }
 
   let(:output) do
@@ -11,7 +10,7 @@ RSpec.describe "input from STDIN" do
   context 'blank input' do
     let(:input) { '' }
 
-    it "does not output anything" do
+    it 'does not output anything' do
       expect(output).to eq ''
     end
   end
@@ -21,7 +20,7 @@ RSpec.describe "input from STDIN" do
       (1..100).map { SecureRandom.random_bytes(50) }.join "\n"
     end
 
-    it "does not output anything" do
+    it 'does not output anything' do
       expect(output).to eq ''
     end
   end
