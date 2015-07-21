@@ -1,6 +1,6 @@
 require 'securerandom'
 
-RSpec.describe 'input from STDIN' do
+RSpec.describe 'running simulation', type: :feature do
   before { ToyRobot::CLI.input_io = StringIO.new input }
 
   let(:output) do

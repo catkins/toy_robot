@@ -13,6 +13,7 @@ group :test, :development do
   gem 'awesome_print'
   gem 'rake'
   gem 'rubocop', require: false
+  gem 'rubocop-rspec'
 end
 
 group :test do
