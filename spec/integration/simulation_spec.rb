@@ -40,6 +40,14 @@ RSpec.describe 'running simulation', type: :feature do
         LEFT
         MOVE
         REPORT
+        PLACE 0,0,NORTH
+        PLACE_OBJECT
+        REPORT
+        RIGHT
+        MOVE
+        LEFT
+        MOVE
+        REPORT
       EOF
     end
 
@@ -48,6 +56,8 @@ RSpec.describe 'running simulation', type: :feature do
         0,1,NORTH
         0,0,WEST
         3,3,NORTH
+        0,0,NORTH
+        1,1,NORTH
       EOF
     end
 

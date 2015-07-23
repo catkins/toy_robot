@@ -7,7 +7,50 @@ RSpec.describe ToyRobot::Table do
 
   it { is_expected.to respond_to :width }
   it { is_expected.to respond_to :height }
-  it { is_expected.to be_frozen }
+
+  describe '#obstructions' do
+    its(:obstructions) { is_expected.to be_a Set }
+  end
+
+  describe '#place_object!' do
+    before { table.place_object! position }
+
+    context 'placing an object on a valid square' do
+      let(:position) { ToyRobot::Point.new x: 2, y: 3 }
+
+      its(:obstructions) { is_expected.to include position }
+    end
+
+    context 'placing an object on a invalid square' do
+      let(:position) { ToyRobot::Point.new x: 7, y: 2 }
+
+      its(:obstructions) { is_expected.not_to include position }
+    end
+  end
+
+  describe '#position_is_vacant?' do
+    subject(:result) { table.position_is_vacant? position }
+
+    context 'position is not on table' do
+      let(:position) { ToyRobot::Point.new x: 7, y: 2 }
+
+      it { is_expected.to eq false }
+    end
+
+    context 'position is on table' do
+      let(:position) { ToyRobot::Point.new x: 2, y: 3 }
+
+      context 'when an obstruction is at position' do
+        before { table.place_object! position }
+
+        it { is_expected.to eq false }
+      end
+
+      context 'when an obstruction is not at position' do
+        it { is_expected.to eq true }
+      end
+    end
+  end
 
   describe '#valid?' do
     it { is_expected.to respond_to :valid? }
@@ -31,28 +74,6 @@ RSpec.describe ToyRobot::Table do
         let(:width) { 0 }
 
         its(:valid?) { is_expected.to be false }
-      end
-    end
-  end
-
-  describe '#inside_bounds?' do
-    it { is_expected.to respond_to :inside_bounds? }
-
-    let(:result) { subject.inside_bounds?(point) }
-
-    context 'when given point is inside of the bounds of the table' do
-      let(:point) { ToyRobot::Point.new x: 2, y: 3 }
-
-      it 'returns `true`' do
-        expect(result).to be true
-      end
-    end
-
-    context 'when given point is outside of the bounds of the table' do
-      let(:point) { ToyRobot::Point.new x: 6, y: 7 }
-
-      it 'returns `false`' do
-        expect(result).to be false
       end
     end
   end

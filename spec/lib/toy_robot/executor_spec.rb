@@ -30,9 +30,9 @@ RSpec.describe ToyRobot::Executor do
       end
     end
 
-    %w(left right move report).each do |command|
+    %w(left right move report place_object).each do |command|
       context(command) do
-        it "delegates to Robot##{command}" do
+        it "##{command} delegates to Robot##{command}" do
           expect(robot).to receive(command.to_sym)
           executor.call command.to_sym, []
         end

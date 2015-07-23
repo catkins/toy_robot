@@ -192,6 +192,14 @@ RSpec.describe ToyRobot::Robot do
       end
     end
 
+    context 'when there is an obstruction in front of robot' do
+      before { table.place_object! ToyRobot::Point.new x: 1, y: 2 }
+
+      it "does not change robot's position" do
+        expect { robot.move }.not_to change(robot, :position)
+      end
+    end
+
     context 'when robot is on edge of table and facing the abyss' do
       let(:starting_point) { ToyRobot::Point.new x: 0, y: 0 }
       let(:direction) { ToyRobot::Direction::SOUTH }
@@ -206,6 +214,24 @@ RSpec.describe ToyRobot::Robot do
       it 'returns nil as it is a command method' do
         expect(robot.place(starting_point, direction)).to be_nil
       end
+    end
+  end
+
+  describe '#place_object' do
+    it { is_expected.to respond_to :place_object }
+
+    let(:starting_point) { ToyRobot::Point.new x: 1, y: 1 }
+
+    before do
+      robot.place starting_point, ToyRobot::Direction::NORTH
+      allow(table).to receive(:place_object!)
+      robot.place_object
+    end
+
+    it 'delegates placing the object to the table' do
+      expected_position = ToyRobot::Point.new x: 1, y: 2
+
+      expect(table).to have_received(:place_object!).with expected_position
     end
   end
 end

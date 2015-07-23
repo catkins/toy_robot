@@ -26,7 +26,7 @@ module ToyRobot
     end
 
     def place(point, direction)
-      if table.inside_bounds?(point) && compass.includes_direction?(direction)
+      if valid_position?(point) && compass.includes_direction?(direction)
         @position        = point
         @compass.bearing = direction
       end
@@ -37,11 +37,13 @@ module ToyRobot
     def move
       return unless on_table?
 
-      new_position = @position.step_in_direction(@compass.bearing)
-
-      @position = new_position if valid_position? new_position
+      @position = point_in_front if valid_position? point_in_front
 
       nil
+    end
+
+    def place_object
+      @table.place_object! point_in_front
     end
 
     def report
@@ -56,8 +58,12 @@ module ToyRobot
 
     private
 
+    def point_in_front
+      @position.step_in_direction(@compass.bearing)
+    end
+
     def valid_position?(point)
-      @table.inside_bounds?(point)
+      @table.position_is_vacant?(point)
     end
   end
 end
